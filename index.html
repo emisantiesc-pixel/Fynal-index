@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>P O S T E R S XL - MOBILE ARCADE</title>
+    <title>P O S T E R S XL - ARCADE NIGHT</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
@@ -16,71 +16,82 @@
         body { 
             margin: 0; background: #000; color: #fff; 
             font-family: 'Press Start 2P', cursive;
-            height: 100dvh; /* Evita cortes por barras de navegador en móvil */
-            width: 100vw;
+            height: 100dvh; width: 100vw;
             overflow: hidden; 
             display: flex; flex-direction: column;
             position: relative;
         }
 
-        /* EFECTO CRT SCANLINES */
+        /* EFECTO CRT MEJORADO PARA CLUB */
         body::before {
             content: " "; position: absolute; top: 0; left: 0; bottom: 0; right: 0;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.15) 50%);
-            z-index: 100; background-size: 100% 2px; pointer-events: none;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.2) 50%);
+            z-index: 100; background-size: 100% 3px; pointer-events: none;
         }
 
         .container {
             flex: 1; display: flex; flex-direction: column;
             align-items: center; justify-content: space-between;
-            padding: 15px; z-index: 5;
+            padding: 20px; z-index: 5;
         }
 
         .p { display: none; width: 100%; flex-direction: column; align-items: center; height: 100%; }
         .v { display: flex !important; }
 
+        /* TÍTULOS MÁS GRANDES */
         h1 { 
-            color: #fff; text-shadow: 2px 2px 0 var(--p), -2px -2px 0 var(--b); 
-            font-size: 1.2rem; margin: 10px 0; text-align: center; line-height: 1.3;
+            color: #fff; text-shadow: 3px 3px 0 var(--p), -3px -3px 0 var(--b); 
+            font-size: 1.5rem; margin: 15px 0; text-align: center; line-height: 1.4;
         }
 
         #txt { 
-            color: var(--y); font-size: 0.75rem; 
-            margin: 10px 0; min-height: 80px; 
-            line-height: 1.5; text-align: center; text-transform: uppercase;
+            color: var(--y); font-size: 0.9rem; /* Aumentado */
+            margin: 15px 0; min-height: 100px; 
+            line-height: 1.6; text-align: center; text-transform: uppercase;
             display: flex; align-items: center; justify-content: center;
+            text-shadow: 0 0 8px rgba(255, 255, 0, 0.4);
         }
         
         .hud { 
             width: 100%; display: flex; justify-content: space-between; 
-            color: var(--g); font-size: 0.6rem; padding: 8px; 
-            border: 2px solid var(--g); background: rgba(0, 255, 0, 0.1);
+            color: var(--g); font-size: 0.75rem; padding: 10px; 
+            border: 3px solid var(--g); background: rgba(0, 255, 0, 0.1);
+            box-shadow: inset 0 0 10px var(--g);
         }
         
+        /* BOTONES MÁS VISIBLES Y FÁCILES DE TOCAR */
         .btn { 
-            width: 100%; padding: 12px 10px; margin: 5px 0; 
-            background: #000; border: 2px solid #fff; 
+            width: 100%; padding: 18px 10px; margin: 8px 0; 
+            background: #000; border: 3px solid #fff; 
             color: #fff; font-family: 'Press Start 2P', cursive;
-            font-size: 0.6rem; text-transform: uppercase; cursor: pointer;
-            box-shadow: 3px 3px 0 #444; transition: 0.1s;
+            font-size: 0.8rem; text-transform: uppercase; cursor: pointer;
+            box-shadow: 5px 5px 0 #444; transition: 0.1s;
         }
 
-        .btn:active { transform: translate(1px, 1px); box-shadow: none; background: #fff; color: #000; }
-        .opt-btn { border-color: var(--b); color: var(--b); box-shadow: 3px 3px 0 #005a5a; }
+        .btn:active { transform: translate(2px, 2px); box-shadow: none; background: #fff; color: #000; }
+        .opt-btn { border-color: var(--b); color: var(--b); box-shadow: 5px 5px 0 #005a5a; }
+
+        /* INPUT CÓDIGO SUBLIMINAL */
+        .secret-input {
+            background: #000; border: 2px dashed var(--r);
+            color: var(--r); font-family: 'Press Start 2P', cursive;
+            padding: 12px; text-align: center; width: 85%;
+            margin-top: 20px; font-size: 0.6rem; outline: none;
+        }
 
         #modal {
             display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95); z-index: 200;
+            background: rgba(0,0,0,0.98); z-index: 200;
             flex-direction: column; align-items: center; justify-content: center; padding: 10px;
         }
         .modal-content {
-            border: 4px double #fff; background: #000; padding: 20px;
-            width: 95%; max-width: 350px; text-align: center;
+            border: 6px double #fff; background: #000; padding: 30px;
+            width: 95%; max-width: 400px; text-align: center;
         }
 
         #opts { width: 100%; flex: 1; display: flex; flex-direction: column; justify-content: center; }
 
-        @keyframes shake { 0% { transform: translate(2px, 2px); } 20% { transform: translate(-3px, 0px); } 100% { transform: translate(0px, 0px); } }
+        @keyframes shake { 0% { transform: translate(3px, 3px); } 20% { transform: translate(-3px, 0px); } 100% { transform: translate(0px, 0px); } }
         .shake { animation: shake 0.2s ease-in-out; }
     </style>
 </head>
@@ -88,8 +99,8 @@
 
     <div id="modal">
         <div class="modal-content">
-            <div id="mTitle" style="color:var(--r); font-size: 1rem; margin-bottom: 15px;">MESSAGE</div>
-            <div id="mMsg" style="font-size: 0.6rem; line-height: 1.5; margin-bottom: 20px;"></div>
+            <div id="mTitle" style="color:var(--r); font-size: 1.2rem; margin-bottom: 20px;">SYSTEM MESSAGE</div>
+            <div id="mMsg" style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 25px;"></div>
             <div id="premio-area"></div>
             <div class="btn" id="mBtn" style="border-color:var(--g); color:var(--g);">CONTINUE</div>
         </div>
@@ -99,9 +110,11 @@
         <div id="p1" class="p v">
             <div style="flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center;">
                 <h1>POSTERS<br>TRIVIA XL</h1>
-                <p style="color:var(--p); font-size:0.5rem; margin-top:10px;">INSERT COIN</p>
+                <p style="color:var(--p); font-size:0.6rem; margin-top:10px;">INSERT COIN</p>
+                
+                <input type="text" id="secretCode" class="secret-input" placeholder="ENTER SECRET CODE" maxlength="12">
             </div>
-            <div class="btn" onclick="start()" style="border-color:var(--y); color:var(--y); margin-bottom: 40px;"> START GAME </div>
+            <div class="btn" onclick="checkStart()" style="border-color:var(--y); color:var(--y); margin-bottom: 40px; font-size: 1.1rem;"> START GAME </div>
         </div>
 
         <div id="p2" class="p">
@@ -109,14 +122,22 @@
                 <span>SCORE:<span id="s">0000</span></span>
                 <span style="color:var(--r)">HP:<span id="l"></span></span>
             </div>
-            <div id="txt">CARGANDO...</div>
+            <div id="txt">ANALYZING...</div>
             <div id="opts"></div>
-            <div style="height: 10px;"></div>
+            <div style="height: 15px;"></div>
         </div>
     </div>
 
     <script>
         var score = 0, vidas = 2, mazo = [];
+
+        // AQUÍ MODIFICA TUS CÓDIGOS SUBLIMINALES
+        const CODES = { 
+            "MASHUP": "LEVEL: PSYCHO", 
+            "ROCK666": "LEVEL: DARK",
+            "POSTERS": "LEVEL: VIP"
+        };
+
         const banco = [
             {q:"¿Qué baterista de Def Leppard toca con un solo brazo?", a:"Rick Allen", o:["Rick Allen","Lars Ulrich","Nicko McBrain","Phil Collins"]},
             {q:"¿Qué banda de metal lanzó el disco 'St. Anger'?", a:"Metallica", o:["Metallica","Megadeth","Slayer","Anthrax"]},
@@ -230,10 +251,10 @@
             {q:"¿De quien es el tema 'satisfaction'?", a:"Rolling Stones", o:["Rolling Stones","ACDC","Pink Floyd","Nirvana"]},
             {q:"¿De quien es el tema 'HELP'?", a:"The Beatles", o:["The Beatles","ACDC","Pink Floyd","Nirvana"]},
             {q:"¿De quien es el tema 'Crazy Train'?", a:"Ozzy", o:["Ozzy","Pantera","Pink Floyd","Soundgarden"]},
-	    {q:"¿Quien es el principe de las tinieblas?", a:"Ozzy Osbourne", o:["Ozzy Osbourne","John Lennon","Keith Richards","Chuck Berry"]},
-	    {q:"¿Quien compuso el tema'Black magic woman' ?", a:"Santana", o:["Santana","BB king","Keith Richards","Adele"]},
-	    {q:"¿De Quien es el disco'Highway to hell' ?", a:"AC/DC", o:["AC/DC","Erasure","U2","Stevie Wonder"]},
- 	    {q:"¿Que banda tiene una lengua en su logo ?", a:"Rolling Stones", o:["Rolling Stones","ABBA","Aerosmith","The cure"]},
+            {q:"¿Quien es el principe de las tinieblas?", a:"Ozzy Osbourne", o:["Ozzy Osbourne","John Lennon","Keith Richards","Chuck Berry"]},
+            {q:"¿Quien compuso el tema'Black magic woman' ?", a:"Santana", o:["Santana","BB king","Keith Richards","Adele"]},
+            {q:"¿De Quien es el disco'Highway to hell' ?", a:"AC/DC", o:["AC/DC","Erasure","U2","Stevie Wonder"]},
+            {q:"¿Que banda tiene una lengua en su logo ?", a:"Rolling Stones", o:["Rolling Stones","ABBA","Aerosmith","The cure"]},
             {q:"¿Baterista de The Beatles?", a:"Ringo Starr", o:["Ringo Starr","Mick Jagger","Matt Sorum","Danny Carey"]}
         ];
 
@@ -247,8 +268,8 @@
             const b = document.getElementById('mBtn');
             if(g) {
                 let p = score <= 700 ? "NOVATO" : (score <= 1500 ? "2x1 CERVEZA" : (score <= 2900 ? "2x1 FERNET" : "VASO DE FERNET"));
-                document.getElementById('premio-area').innerHTML = `<span style="color:var(--y); font-size:0.5rem;">RANK:</span><br><span style="background:#fff; color:#000; padding:10px; display:inline-block; margin-top:10px; font-size:0.9rem;">${p}</span>`;
-                b.innerText = "RESTART";
+                document.getElementById('premio-area').innerHTML = `<span style="color:var(--y); font-size:0.7rem;">RANKING PSICOLÓGICO:</span><br><span style="background:#fff; color:#000; padding:15px; display:inline-block; margin-top:15px; font-size:1.1rem; border:3px solid var(--p);">${p}</span>`;
+                b.innerText = "REPLAY";
                 b.onclick = () => location.reload();
             } else {
                 document.getElementById('premio-area').innerHTML = "";
@@ -257,8 +278,18 @@
             }
         }
 
+        function checkStart() {
+            const codeInput = document.getElementById('secretCode').value.toUpperCase();
+            if(CODES[codeInput]) {
+                score = 500; // Bonus por descubrir el código
+                showModal("ACCESS GRANTED", CODES[codeInput], false);
+            } else {
+                start();
+            }
+        }
+
         function start() {
-            score = 0; vidas = 2; mazo = shuffle([...banco]);
+            vidas = 2; mazo = shuffle([...banco]);
             document.getElementById('p1').className = 'p';
             document.getElementById('p2').className = 'p v';
             next();
@@ -277,8 +308,8 @@
                     if(op === c.a) { score += 100; next(); }
                     else { 
                         vidas--; document.body.classList.add('shake'); setTimeout(()=>document.body.classList.remove('shake'),200);
-                        if(vidas <= 0) showModal("GAME OVER", "FINAL SCORE: " + score, true);
-                        else showModal("MISSED!", "CORRECT WAS:\n" + c.a, false); 
+                        if(vidas <= 0) showModal("GAME OVER", "TU MENTE HA COLAPSADO. FINAL SCORE: " + score, true);
+                        else showModal("MISSED!", "LA VERDAD ERA:\n" + c.a, false); 
                     }
                 };
                 oBox.appendChild(b);
@@ -287,3 +318,4 @@
     </script>
 </body>
 </html>
+     
