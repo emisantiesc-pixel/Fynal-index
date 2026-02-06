@@ -268,7 +268,7 @@
             const b = document.getElementById('mBtn');
             if(g) {
                 let p = score <= 700 ? "NOVATO" : (score <= 1500 ? "2x1 CERVEZA" : (score <= 2900 ? "2x1 FERNET" : "VASO DE FERNET"));
-                document.getElementById('premio-area').innerHTML = `<span style="color:var(--y); font-size:0.7rem;">RANKING PSICOLÓGICO:</span><br><span style="background:#fff; color:#000; padding:15px; display:inline-block; margin-top:15px; font-size:1.1rem; border:3px solid var(--p);">${p}</span>`;
+                document.getElementById('premio-area').innerHTML = `<span style="color:var(--y); font-size:0.7rem;">RESULTADO FINAL:</span><br><span style="background:#fff; color:#000; padding:15px; display:inline-block; margin-top:15px; font-size:1.1rem; border:3px solid var(--p);">${p}</span>`;
                 b.innerText = "REPLAY";
                 b.onclick = () => location.reload();
             } else {
