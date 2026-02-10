@@ -38,14 +38,23 @@
         .p { display: none; width: 100%; flex-direction: column; align-items: center; height: 100%; }
         .v { display: flex !important; }
 
-        /* TÍTULOS MÁS GRANDES */
         h1 { 
             color: #fff; text-shadow: 3px 3px 0 var(--p), -3px -3px 0 var(--b); 
             font-size: 1.5rem; margin: 15px 0; text-align: center; line-height: 1.4;
         }
 
+        /* ESTILO FIRMA @EMILIO.CESAR */
+        .credits {
+            font-size: 0.5rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 15px;
+        }
+        .credits b { color: var(--b); text-shadow: 0 0 5px var(--b); }
+
         #txt { 
-            color: var(--y); font-size: 0.9rem; /* Aumentado */
+            color: var(--y); font-size: 0.9rem;
             margin: 15px 0; min-height: 100px; 
             line-height: 1.6; text-align: center; text-transform: uppercase;
             display: flex; align-items: center; justify-content: center;
@@ -59,7 +68,6 @@
             box-shadow: inset 0 0 10px var(--g);
         }
         
-        /* BOTONES MÁS VISIBLES Y FÁCILES DE TOCAR */
         .btn { 
             width: 100%; padding: 18px 10px; margin: 8px 0; 
             background: #000; border: 3px solid #fff; 
@@ -71,7 +79,6 @@
         .btn:active { transform: translate(2px, 2px); box-shadow: none; background: #fff; color: #000; }
         .opt-btn { border-color: var(--b); color: var(--b); box-shadow: 5px 5px 0 #005a5a; }
 
-        /* INPUT CÓDIGO SUBLIMINAL */
         .secret-input {
             background: #000; border: 2px dashed var(--r);
             color: var(--r); font-family: 'Press Start 2P', cursive;
@@ -103,6 +110,7 @@
             <div id="mMsg" style="font-size: 0.8rem; line-height: 1.6; margin-bottom: 25px;"></div>
             <div id="premio-area"></div>
             <div class="btn" id="mBtn" style="border-color:var(--g); color:var(--g);">CONTINUE</div>
+            <div class="credits" style="margin-top: 25px; opacity: 0.8;">BY <b>@EMILIO.CESAR</b></div>
         </div>
     </div>
 
@@ -113,6 +121,8 @@
                 <p style="color:var(--p); font-size:0.6rem; margin-top:10px;">INSERT COIN</p>
                 
                 <input type="text" id="secretCode" class="secret-input" placeholder="ENTER SECRET CODE" maxlength="12">
+                
+                <div class="credits">DESARROLLADO POR <b>@EMILIO.CESAR</b></div>
             </div>
             <div class="btn" onclick="checkStart()" style="border-color:var(--y); color:var(--y); margin-bottom: 40px; font-size: 1.1rem;"> START GAME </div>
         </div>
@@ -124,14 +134,13 @@
             </div>
             <div id="txt">ANALYZING...</div>
             <div id="opts"></div>
-            <div style="height: 15px;"></div>
+            <div class="credits" style="margin-bottom: 10px; opacity: 0.3;">@EMILIO.CESAR</div>
         </div>
     </div>
 
     <script>
         var score = 0, vidas = 2, mazo = [];
 
-        // AQUÍ MODIFICA TUS CÓDIGOS SUBLIMINALES
         const CODES = { 
             "MASHUP": "LEVEL: PSYCHO", 
             "ROCK666": "LEVEL: DARK",
@@ -281,7 +290,7 @@
         function checkStart() {
             const codeInput = document.getElementById('secretCode').value.toUpperCase();
             if(CODES[codeInput]) {
-                score = 500; // Bonus por descubrir el código
+                score = 500; 
                 showModal("ACCESS GRANTED", CODES[codeInput], false);
             } else {
                 start();
@@ -318,4 +327,3 @@
     </script>
 </body>
 </html>
-     
